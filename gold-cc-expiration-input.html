@@ -181,6 +181,9 @@ style this element.
          * Overidden from Polymer.IronControlState.
          */
         _onFocusedChanged: function(focused) {
+          if (this.value == '') {
+            return;
+          }
           if (!focused) {
             this._handleAutoValidate();
           }
