@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-align: center;
       }
 
-      input[is="iron-input"] {
+      input {
         position: relative; /* to make a stacking context */
         outline: none;
         box-shadow: none;
@@ -54,38 +54,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <span aria-hidden id="yearLabel" hidden>Year</span>
 
     <div class="container">
-      <input is="iron-input"
-          id="expirationMonth"
-          aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'monthLabel')]]"
-          required$="[[required]]"
-          maxlength="2"
-          bind-value="{{month}}"
-          placeholder="MM"
-          allowed-pattern="[0-9]"
-          prevent-invalid-input
-          autocomplete="cc-exp-month"
-          type="tel"
-          disabled$="[[disabled]]"
-          invalid="{{invalid}}"
-          autofocus$="[[autofocus]]"
-          inputmode$="[[inputmode]]"
-          readonly$="[[readonly]]">
+      <iron-input id="expirationMonth"
+        allowed-pattern="[0-9]"
+        bind-value="{{month}}"
+        invalid="{{invalid}}">
+        <input
+            id="nativeInput"
+            aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'monthLabel')]]"
+            required$="[[required]]"
+            maxlength="2"
+            placeholder="MM"
+            prevent-invalid-input
+            autocomplete="cc-exp-month"
+            type="tel"
+            disabled$="[[disabled]]"
+            invalid="{{invalid}}"
+            autofocus$="[[autofocus]]"
+            inputmode$="[[inputmode]]"
+            readonly$="[[readonly]]">
+        </iron-input>
       <span>/</span>
-      <input is="iron-input"
-          id="expirationYear"
-          aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'yearLabel')]]"
-          required$="[[required]]"
-          maxlength="2"
-          bind-value="{{year}}"
-          placeholder="YY"
-          allowed-pattern="[0-9]"
-          prevent-invalid-input
-          autocomplete="cc-exp-year"
-          type="tel"
-          disabled$="[[disabled]]"
-          invalid="{{invalid}}"
-          inputmode$="[[inputmode]]"
-          readonly$="[[readonly]]">
+      <iron-input id="expirationYear"
+        allowed-pattern="[0-9]"
+        bind-value="{{year}}"
+        invalid="{{invalid}}">
+        <input
+            id="nativeInput"
+            aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'yearLabel')]]"
+            required$="[[required]]"
+            maxlength="2"
+            placeholder="YY"
+            prevent-invalid-input
+            autocomplete="cc-exp-year"
+            type="tel"
+            disabled$="[[disabled]]"
+            inputmode$="[[inputmode]]"
+            readonly$="[[readonly]]">
+        </iron-input>
+        <div class="icon-container"><iron-icon id="icon"></iron-icon></div>
+      </iron-input>
     </div>
   </template>
 
@@ -183,7 +190,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     ],
 
     _selectYear: function() {
-      this.$.expirationYear.focus();
+      this.$.expirationYear.inputElement.focus();
     },
 
     _computeDate: function(month, year) {

@@ -66,9 +66,9 @@ style this element.
         disabled$="[[disabled]]"
         invalid="[[invalid]]">
 
-      <label hidden$="[[!label]]">[[label]]</label>
+      <label slot="label" hidden$="[[!label]]">[[label]]</label>
 
-      <date-input class="paper-input-input" id="input"
+      <date-input slot="input" class="paper-input-input" id="input"
           aria-label-prefix="[[_ariaLabelledBy]]"
           required$="[[required]]"
           autocomplete$="[[autocomplete]]"
@@ -81,7 +81,7 @@ style this element.
       </date-input>
 
       <template is="dom-if" if="[[errorMessage]]">
-        <paper-input-error>[[errorMessage]]</paper-input-error>
+        <paper-input-error aria-live="assertive" slot="add-on">[[errorMessage]]</paper-input-error>
       </template>
 
     </paper-input-container>
@@ -117,6 +117,11 @@ style this element.
             type: String,
             value: '',
             observer: '_onValueChanged'
+          },
+
+          alwaysFloatLabel: {
+            type: Boolean,
+            value: true
           }
         },
 
