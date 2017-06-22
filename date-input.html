@@ -189,6 +189,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       '_computeDate(month, year)'
     ],
 
+    selectMonth: function() {
+      this.$.expirationMonth.inputElement.focus();
+    },
+
     _selectYear: function() {
       this.$.expirationYear.inputElement.focus();
     },

@@ -94,11 +94,6 @@ style this element.
 
         is: 'gold-cc-expiration-input',
 
-        /* The underlying dateInput is tabbable */
-        hostAttributes: {
-          'tabindex': -1
-        },
-
         behaviors: [
           Polymer.PaperInputBehavior,
           Polymer.IronFormElementBehavior
@@ -181,10 +176,9 @@ style this element.
          * Overidden from Polymer.IronControlState.
          */
         _onFocusedChanged: function(focused) {
-          if (this.value == '') {
-            return;
-          }
-          if (!focused) {
+          if (focused) {
+            this.$.input.selectMonth();
+          } else if (this.value != '') {
             this._handleAutoValidate();
           }
         }
