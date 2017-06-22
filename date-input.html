@@ -214,11 +214,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     _computeDate: function(month, year) {
+      var monthChanged = true;
+      if (this.date != undefined) {
+        monthChanged = (this.date.month != month);
+      }
       // Months are 0-11.
       this.date = {month: month, year: year};
       this.fire('dateChanged', this.date);
       // Advance cursor to year after month entry
-      if (month && month.length === 2) {
+      if (monthChanged && month && month.length === 2 ) {
         this._selectYear();
       }
     },
