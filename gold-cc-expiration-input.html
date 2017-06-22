@@ -77,7 +77,9 @@ style this element.
           autofocus$="[[autofocus]]"
           inputmode$="[[inputmode]]"
           placeholder$="[[placeholder]]"
-          readonly$="[[readonly]]">
+          readonly$="[[readonly]]"
+          month-placeholder="[[monthPlaceholder]]"
+          year-placeholder="[[yearPlaceholder]]">
       </date-input>
 
       <template is="dom-if" if="[[errorMessage]]">
@@ -117,6 +119,22 @@ style this element.
           alwaysFloatLabel: {
             type: Boolean,
             value: true
+          },
+
+          /**
+          * The month placeholder, default is 'MM'.
+          */
+          monthPlaceholder: {
+            type: String,
+            value: 'MM'
+          },
+
+          /**
+          * The year placeholder, default is 'YY'.
+          */
+          yearPlaceholder: {
+            type: String,
+            value: 'YY'
           }
         },
 

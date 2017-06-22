@@ -63,7 +63,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'monthLabel')]]"
             required$="[[required]]"
             maxlength="2"
-            placeholder="MM"
+            placeholder="[[monthPlaceholder]]"
             prevent-invalid-input
             autocomplete="cc-exp-month"
             type="tel"
@@ -83,7 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             aria-labelledby$="[[_computeAriaLabel(ariaLabelPrefix,'yearLabel')]]"
             required$="[[required]]"
             maxlength="2"
-            placeholder="YY"
+            placeholder="[[yearPlaceholder]]"
             prevent-invalid-input
             autocomplete="cc-exp-year"
             type="tel"
@@ -126,11 +126,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       /**
+       * The month placeholder, default is 'MM'.
+       */
+      monthPlaceholder: {
+        type: String,
+        value: 'MM'
+      },
+
+      /**
        * The year component of the date displayed.
        */
       year: {
         type: String,
         value: ''
+      },
+
+      /**
+       * The year placeholder, default is 'YY'.
+       */
+      yearPlaceholder: {
+        type: String,
+        value: 'YY'
       },
 
       /**
